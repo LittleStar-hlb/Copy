@@ -1,0 +1,79 @@
+.command {
+  position: absolute;
+  inset: 0 auto auto 90px;
+  background-color: #fff;
+  width: calc(100% - 325px);
+  height: auto;
+  max-height: 100%;
+  border: none;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+}
+
+.command-backdrop {
+  position: fixed;
+  inset: 0px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.command > .command-head {
+  padding: 10px 19px 0;
+}
+
+.command > .command-main {
+  padding: 5px;
+  height: calc(100% - 84px);
+  overflow: auto;
+}
+
+.command .command-main h3 {
+  padding: 7px 14px 0;
+  font-size: 0.875rem;
+  color: var(--text-color);
+}
+
+.command .command-main .separate {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media screen and (max-width: 1011px) {
+  .command {
+    width: calc(100% - 10px);
+    inset: 0 0 auto 0;
+  }
+}
+
+@media screen and (max-height: 577px) {
+  .command {
+    height: calc(100% - 90px);
+  }
+}
+
+.command .command-footer {
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  border-top: var(--border);
+}
+
+.command .command-footer span a {
+  color: #0969da;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.command .search-area .delete-button {
+  position: absolute;
+  right: 23px;
+}
+
+#command-input:focus {
+  outline-color: rgb(9, 105, 218);
+}
+
+.command .command-head .menu {
+  border: none;
+}

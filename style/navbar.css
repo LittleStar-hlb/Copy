@@ -1,0 +1,55 @@
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ccc;
+  background-color: var(--background-color);
+}
+
+.navbar > .nav {
+  display: flex;
+}
+
+.navbar > .menu {
+  display: none;
+  margin-right: 20px;
+}
+
+.navbar .nav .nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  flex-shrink: 0;
+  padding: 10px;
+  margin: 0 5px;
+  color: #4c4848;
+  border-radius: 5px;
+}
+
+.navbar .select .select-block {
+  display: none;
+}
+
+.navbar .nav .nav-item:hover {
+  cursor: pointer;
+  background-color: var(--button-hover-color);
+}
+
+.select-block {
+  position: absolute;
+  inset: auto auto 0 0;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  transform: translateY(5px);
+  background-color: orange;
+}
+
+@media screen and (max-width: 928px) {
+  .navbar > .menu {
+    display: flex;
+  }
+}

@@ -1,0 +1,157 @@
+:root {
+  --border: 1px solid #ccc;
+  --radius: 5px;
+  --text-color: #636c76;
+  --button-hover-color: rgb(239, 241, 244);
+  --separate-color: #d0d7de;
+  --background-color: rgb(246, 248, 250);
+  --box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-size: 0.9375rem;
+  color: var(--text-color);
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius);
+  border: var(--border);
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.menu:hover {
+  background-color: var(--button-hover-color);
+}
+
+.select {
+  position: absolute;
+  inset: 40px 20px auto auto;
+  display: flex;
+  flex-direction: column;
+  padding: 7px;
+  width: 180px;
+  color: #636c76;
+  background-color: #fff;
+  border: 2px solid #e3dede;
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: var(--dialog-box-shadow);
+}
+
+.option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+  padding: 7px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.nav-item::after,
+.option::after {
+  content: attr(data-text);
+  color: var(--text-color);
+  display: block;
+}
+
+.option:hover {
+  background-color: rgb(239, 241, 244);
+}
+
+.image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: bottom;
+  border: var(--border);
+  cursor: pointer;
+}
+
+.icon {
+  user-select: none;
+  fill: var(--text-color);
+}
+
+.visible {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.search-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 34px;
+}
+
+.search-area .label {
+  position: relative;
+  display: block;
+  width: inherit;
+  height: inherit;
+}
+
+.search-area .label .search-input {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  padding: 0 2.4rem 0 2rem;
+  vertical-align: bottom;
+  border: var(--border);
+}
+
+.search-area .label .search-input:focus {
+  outline-color: rgb(9, 105, 218);
+}
+
+.search-area .label .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translate(-50%, -50%);
+  cursor: text;
+}
+
+.search-area .delete-button {
+  position: absolute;
+  right: 4px;
+}
+
+.search-content {
+  padding: 5px 7px;
+}
+
+.search-content > .option::after {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+}
+
+.search-area.hidden {
+  display: none;
+}
+
+.separate:empty {
+  margin: 10px -9px;
+  display: block;
+  height: 1px;
+  background-color: var(--separate-color);
+}
+
