@@ -62,14 +62,6 @@
   border: none;
 }
 
-kbd {
-  display: inline-block;
-  width: 14px;
-  border-radius: 3px;
-  text-align: center;
-  border: var(--border);
-}
-
 .search-button {
   display: flex;
   align-items: center;
@@ -115,6 +107,7 @@ kbd {
   }
 }
 
+/* dialog */
 .dialog:modal {
   width: 320px;
   height: 100%;

@@ -1,24 +1,46 @@
-const commandBackdrop = document.querySelector('.command-backdrop');
+const commandBackdrop = document.querySelectorAll('.command-backdrop');
 const globalSearch = document.querySelector('.globalar .search .search-button');
-const command = document.querySelector('.command');
-const commandSearchInput = command.querySelector('.label > .search-input');
-const commandDeleteBtn = command.querySelector('.delete-button');
+const globalCommandBtn = document.querySelector('.globalar .command-button');
+const commandOne = document.querySelector('.command-one');
+const commandTwo = document.querySelector('.command-two');
+const commandSearchInput_one = commandOne.querySelector('.label > .search-input');
+const commandSearchInput_two = commandTwo.querySelector('.label > .search-input');
+const commandDeleteBtn_one = commandOne.querySelector('.delete-button');
+const commandDeleteBtn_two = commandTwo.querySelector('.delete-button');
+
+const commandBackdrops = Array.from(commandBackdrop);
 
 globalSearch.addEventListener('click', () => {
-  commandBackdrop.classList.replace('hidden', 'visible');
-  commandSearchInput.focus();
+  commandBackdrop[0].classList.replace('hidden', 'visible');
+  commandSearchInput_one.focus();
 });
 
-commandBackdrop.addEventListener('click', (event) => {
-  if (event.target === commandBackdrop) {
-    commandBackdrop.classList.replace('visible', 'hidden');
-  }
+commandBackdrops.forEach((backdrop) => {
+  backdrop.addEventListener('click', (event) => {
+    if (event.target === backdrop) {
+      backdrop.classList.replace('visible', 'hidden');
+    }
+  });
 });
 
-commandSearchInput.addEventListener('input', (event) => {
-  handleSearchInput(event, commandDeleteBtn);
+globalCommandBtn.addEventListener('click', () => {
+  commandBackdrop[1].classList.replace('hidden', 'visible');
+  commandSearchInput_two.focus();
 });
 
-commandDeleteBtn.addEventListener('click', () => {
-  handleSearchDelete(commandSearchInput, commandDeleteBtn);
+
+commandSearchInput_one.addEventListener('input', (event) => {
+  handleSearchInput(event, commandDeleteBtn_one);
+});
+
+commandSearchInput_two.addEventListener('input', (event) => {
+  handleSearchInput(event, commandDeleteBtn_two);
+});
+
+commandDeleteBtn_one.addEventListener('click', () => {
+  handleSearchDelete(commandSearchInput_one, commandDeleteBtn_one);
+});
+
+commandDeleteBtn_two.addEventListener('click', () => {
+  handleSearchDelete(commandSearchInput_two, commandDeleteBtn_two);
 });

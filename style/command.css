@@ -1,4 +1,4 @@
-.command {
+.command-one {
   position: absolute;
   inset: 0 auto auto 90px;
   background-color: #fff;
@@ -16,41 +16,28 @@
   background: rgba(0, 0, 0, 0.1);
 }
 
-.command > .command-head {
+.command-one > .command-one-head {
   padding: 10px 19px 0;
 }
 
-.command > .command-main {
+.command-one > .command-one-main {
   padding: 5px;
   height: calc(100% - 84px);
   overflow: auto;
 }
 
-.command .command-main h3 {
+.command-one .command-one-main h3 {
   padding: 7px 14px 0;
   font-size: 0.875rem;
   color: var(--text-color);
 }
 
-.command .command-main .separate {
+.command-one .command-one-main .separate {
   margin-left: 0;
   margin-right: 0;
 }
 
-@media screen and (max-width: 1011px) {
-  .command {
-    width: calc(100% - 10px);
-    inset: 0 0 auto 0;
-  }
-}
-
-@media screen and (max-height: 577px) {
-  .command {
-    height: calc(100% - 90px);
-  }
-}
-
-.command .command-footer {
+.command-one .command-one-footer {
   padding: 0 25px;
   display: flex;
   justify-content: space-between;
@@ -59,21 +46,91 @@
   border-top: var(--border);
 }
 
-.command .command-footer span a {
+.command-one .command-one-footer span a {
   color: #0969da;
   text-decoration: none;
   font-size: 0.875rem;
 }
 
-.command .search-area .delete-button {
+.command-one .search-area .delete-button {
   position: absolute;
   right: 23px;
 }
 
-#command-input:focus {
+#command-one-input:focus {
   outline-color: rgb(9, 105, 218);
 }
 
-.command .command-head .menu {
+.command-one .command-one-head .menu {
   border: none;
+}
+
+.command-two {
+  position: absolute;
+  inset: 50px auto auto 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  width: 720px;
+  height: auto;
+  max-height: 100%;
+  border: none;
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+}
+
+.command-two > .command-two-head {
+  padding: 10px 19px;
+  border-bottom: var(--border);
+}
+
+#command-two-input {
+  outline: none;
+  border: none;
+}
+
+.command-two > .command-two-tip {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 17px;
+}
+
+.command-two > .command-two-main {
+  padding: 5px;
+  height: calc(100% - 84px);
+  overflow: auto;
+}
+
+.command-two > .command-two-main h3 {
+  padding: 5px 14px;
+  font-size: 0.875rem;
+  color: var(--text-color);
+}
+
+.command-two-main .search-content > .option {
+  padding: 10px 7px;
+}
+
+.command-two-main .search-content > .option::after {
+  content: "";
+}
+
+.command-two-main .search-content > .option:hover::after {
+  content: attr(data-text);
+}
+
+@media screen and (max-width: 1011px) {
+  .command-one {
+    width: calc(100% - 10px);
+    inset: 0 0 auto 0;
+  }
+}
+
+@media screen and (max-height: 577px) {
+  .command-one {
+    height: calc(100% - 90px);
+  }
+
+  .command-two {
+    height: calc(100% - 120px);
+  }
 }
