@@ -46,6 +46,7 @@
   border-radius: 10px;
   z-index: 1;
   box-shadow: var(--dialog-box-shadow);
+  overflow: hidden;
 }
 
 .option {
@@ -149,8 +150,8 @@
 }
 
 .separate:empty {
-  margin: 10px -9px;
-  display: block;
+  margin: 7px -9px;
+  border: none;
   height: 1px;
   background-color: var(--separate-color);
 }

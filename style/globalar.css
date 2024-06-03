@@ -19,6 +19,10 @@
   background-color: transparent;
 }
 
+.globalar .globalar-right {
+  position: relative;
+}
+
 .globalar .globalar-right,
 .globalar .globalar-right .search,
 .globalar .globalar-right .component {
@@ -53,7 +57,7 @@
   background-color: var(--separate-color);
 }
 
-.globalar .globalar-right .separate {
+.globalar .globalar-right > .separate {
   margin: 0;
   display: block;
   width: 1px;
@@ -75,6 +79,12 @@
   border-radius: 5px 0 0 5px;
   cursor: pointer;
   background-color: transparent;
+}
+
+.globalar .globalar-right .select {
+  position: absolute;
+  top: 35px;
+  right: 160px;
 }
 
 @media screen and (max-width: 1011px) {

@@ -1,3 +1,7 @@
+const selectToggles = {
+  isCreateOpen: false,
+  isMenuOpen: false
+};
 
 function initItemOptions(itemOptions) {
   let options = Array.from(itemOptions);
@@ -42,4 +46,3 @@ function handleSearchDelete(inputDom, deleteDom) {
   inputDom.focus();
   deleteDom.classList.replace('visible', 'hidden');
 }
-

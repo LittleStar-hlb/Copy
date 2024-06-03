@@ -1,23 +1,23 @@
 const menu = document.querySelector(".navbar > .menu");
 const nav = document.querySelector(".navbar > .nav");
 const navItems = document.querySelectorAll(".navbar .nav .nav-item");
-const select = document.querySelector(".navbar > .select");
+const navSelect = document.querySelector(".navbar > .select");
 const selectBlock = document.querySelector(".select-block");
 
 const items = Array.from(navItems);
 const menuWidth = 49;
-let isMenuOpen = false;
+
 let currentIndex = items.length - 1;
 let prevWidth = document.documentElement.clientWidth;
 
 const itemsAxis = items.map((item) => item.offsetLeft + item.offsetWidth + menuWidth);
 const itemsWidth = items.map((item) => item.offsetWidth);
 
-const observer = new MutationObserver((mutationsList) => {
+const mutationObserver = new MutationObserver((mutationsList) => {
   const nodesLen = mutationsList[0].target.children.length;
   if (!nodesLen) {
     isMenuOpen = false;
-    select.classList.replace("visible", "hidden");
+    navSelect.classList.replace("visible", "hidden");
   }
 });
 
@@ -32,9 +32,10 @@ function selectNavItem(event) {
 }
 
 function toggleMenu() {
-  isMenuOpen = !isMenuOpen;
-  select.classList.toggle("hidden", !isMenuOpen);
-  select.classList.toggle("visible", isMenuOpen);
+  observer.broadcast();
+  selectToggles.isMenuOpen = !selectToggles.isMenuOpen;
+  navSelect.classList.toggle("hidden", !selectToggles.isMenuOpen);
+  navSelect.classList.toggle("visible", selectToggles.isMenuOpen);
 }
 
 function resizeWindow() {
@@ -45,7 +46,7 @@ function resizeWindow() {
     while (currentIndex > -1 && currWidth <= itemsAxis[currentIndex]) {
       item = items[currentIndex];
       item.classList.replace("nav-item", "option");
-      select.appendChild(item);
+      navSelect.appendChild(item);
       currentIndex--;
     }
   } else {
@@ -64,8 +65,9 @@ function resizeWindow() {
 
 function handleDocumentClick(event) {
   if (!event.target.closest(".select") && !event.target.closest(".menu")) {
-    isMenuOpen = false;
-    select.classList.replace("visible", "hidden");
+    observer.broadcast();
+    selectToggles.isMenuOpen = false;
+    selectToggles.isCreateOpen = false;
   }
 }
 
@@ -73,11 +75,18 @@ function initialize() {
   selectNavItem({ target: items[0] });
   menu.addEventListener("click", toggleMenu);
   nav.addEventListener("click", selectNavItem);
-  select.addEventListener("click", selectNavItem);
+  navSelect.addEventListener("click", selectNavItem);
   document.addEventListener("click", handleDocumentClick);
   window.addEventListener("resize", resizeWindow);
   window.dispatchEvent(new Event("resize"));
-  observer.observe(select, { childList: true });
+  mutationObserver.observe(navSelect, { childList: true });
+
+  observer.subscribe(() => {
+    if (selectToggles.isMenuOpen) {
+      selectToggles.isMenuOpen = false;
+      navSelect.classList.replace("visible", "hidden");
+    }
+  });
 }
 
 initialize();

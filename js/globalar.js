@@ -1,6 +1,8 @@
 const dialog = document.querySelector('.dialog');
 const dialogNav = document.querySelector('.dialog-nav');
 const globalMenu = document.querySelector('.globalar-left > .menu');
+const globalCreateBtn = document.querySelector('.globalar-right > .component >.create-button');
+const globalCreateSelect = document.querySelector('.globalar-right > .select');
 const dialogMenu = document.querySelector('.dialog-header > .menu');
 const dialogSearchBtn = dialogNav.querySelector('.heading-title > .menu');
 const dialogSearchArea = dialogNav.querySelector('.search-area');
@@ -46,4 +48,18 @@ dialogSearchInput.addEventListener('input', (event) => {
 
 dialogDeleteBtn.addEventListener('click', () => {
   handleSearchDelete(dialogSearchInput, dialogDeleteBtn);
+});
+
+globalCreateBtn.addEventListener('click', () => {
+  observer.broadcast();
+  selectToggles.isCreateOpen = !selectToggles.isCreateOpen;
+  globalCreateSelect.classList.toggle("hidden", !selectToggles.isCreateOpen);
+  globalCreateSelect.classList.toggle("visible", selectToggles.isCreateOpen);
+});
+
+observer.subscribe(() => {
+  if (selectToggles.isCreateOpen) {
+    globalCreateSelect.classList.replace("visible", "hidden");
+    selectToggles.isCreateOpen = false;
+  }
 });
