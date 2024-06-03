@@ -108,7 +108,7 @@
   .globalar .globalar-right .create-button,
   .globalar .globalar-right .lssues-button,
   .globalar .globalar-right .branch-button,
-  .separate {
+  .globalar .globalar-right > .separate {
     display: none;
   }
 
