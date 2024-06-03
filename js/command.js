@@ -11,6 +11,7 @@ const commandDeleteBtn_two = commandTwo.querySelector('.delete-button');
 const commandBackdrops = Array.from(commandBackdrop);
 
 globalSearch.addEventListener('click', () => {
+  observer.broadcast();
   commandBackdrop[0].classList.replace('hidden', 'visible');
   commandSearchInput_one.focus();
 });
@@ -24,6 +25,7 @@ commandBackdrops.forEach((backdrop) => {
 });
 
 globalCommandBtn.addEventListener('click', () => {
+  observer.broadcast();
   commandBackdrop[1].classList.replace('hidden', 'visible');
   commandSearchInput_two.focus();
 });

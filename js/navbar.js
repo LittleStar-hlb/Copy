@@ -21,24 +21,14 @@ const mutationObserver = new MutationObserver((mutationsList) => {
   }
 });
 
-function selectNavItem(event) {
-  const index = items.indexOf(event.target);
-  if (index !== -1) {
-    const item = items[index];
-    const offsetWidth = itemsWidth[index];
-    selectBlock.style.width = offsetWidth + "px";
-    item.appendChild(selectBlock);
-  };
-}
-
-function toggleMenu() {
+menu.addEventListener("click", () => {
   observer.broadcast();
   selectToggles.isMenuOpen = !selectToggles.isMenuOpen;
   navSelect.classList.toggle("hidden", !selectToggles.isMenuOpen);
   navSelect.classList.toggle("visible", selectToggles.isMenuOpen);
-}
+});
 
-function resizeWindow() {
+window.addEventListener("resize", () => {
   let item = null;
   let currWidth = document.documentElement.clientWidth;
 
@@ -61,21 +51,28 @@ function resizeWindow() {
   if (item) currentIndex = items.lastIndexOf(item);
 
   prevWidth = currWidth;
-}
+});
 
-function handleDocumentClick(event) {
+document.addEventListener("click", (event) => {
   if (!event.target.closest(".select") && !event.target.closest(".menu")) {
     observer.broadcast();
   }
+});
+
+function selectNavItem(event) {
+  const index = items.indexOf(event.target);
+  if (index !== -1) {
+    const item = items[index];
+    const offsetWidth = itemsWidth[index];
+    selectBlock.style.width = offsetWidth + "px";
+    item.appendChild(selectBlock);
+  };
 }
 
 function initialize() {
   selectNavItem({ target: items[0] });
-  menu.addEventListener("click", toggleMenu);
   nav.addEventListener("click", selectNavItem);
   navSelect.addEventListener("click", selectNavItem);
-  document.addEventListener("click", handleDocumentClick);
-  window.addEventListener("resize", resizeWindow);
   window.dispatchEvent(new Event("resize"));
   mutationObserver.observe(navSelect, { childList: true });
 

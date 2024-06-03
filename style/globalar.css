@@ -112,6 +112,12 @@
     display: none;
   }
 
+  .globalar .globalar-right .select {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
   .breadcrumb strong {
     display: block;
   }

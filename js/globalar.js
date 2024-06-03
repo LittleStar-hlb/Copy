@@ -16,6 +16,7 @@ const dialogDeleteBtn = dialogSearchArea.querySelector('.delete-button');
 const itemList = initItemOptions(dialogItemOptions);
 
 globalMenu.addEventListener('click', () => {
+  observer.broadcast();
   dialog.showModal();
 });
 
