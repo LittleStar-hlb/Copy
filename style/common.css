@@ -111,7 +111,7 @@
   width: 100%;
   height: 100%;
   border-radius: var(--radius);
-  padding: 0 2.4rem 0 2rem;
+  padding: 0 2.5rem 0 2rem;
   vertical-align: bottom;
   border: var(--border);
 }

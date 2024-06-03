@@ -90,6 +90,15 @@
   border: none;
 }
 
+.command-two .command-two-head .menu {
+  border: none;
+}
+
+.command-two .search-area .delete-button {
+  position: absolute;
+  right: 23px;
+}
+
 .command-two > .command-two-tip {
   display: flex;
   justify-content: space-between;
