@@ -69,19 +69,15 @@ function selectNavItem(event) {
   };
 }
 
-function initialize() {
-  selectNavItem({ target: items[0] });
-  nav.addEventListener("click", selectNavItem);
-  navSelect.addEventListener("click", selectNavItem);
-  window.dispatchEvent(new Event("resize"));
-  mutationObserver.observe(navSelect, { childList: true });
+nav.addEventListener("click", selectNavItem);
+navSelect.addEventListener("click", selectNavItem);
+selectNavItem({ target: items[0] });
+window.dispatchEvent(new Event("resize"));
+mutationObserver.observe(navSelect, { childList: true });
 
-  observer.subscribe(() => {
-    if (selectToggles.isMenuOpen) {
-      selectToggles.isMenuOpen = false;
-      navSelect.classList.replace("visible", "hidden");
-    }
-  });
-}
-
-initialize();
+observer.subscribe(() => {
+  if (selectToggles.isMenuOpen) {
+    selectToggles.isMenuOpen = false;
+    navSelect.classList.replace("visible", "hidden");
+  }
+});
