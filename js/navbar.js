@@ -66,8 +66,6 @@ function resizeWindow() {
 function handleDocumentClick(event) {
   if (!event.target.closest(".select") && !event.target.closest(".menu")) {
     observer.broadcast();
-    selectToggles.isMenuOpen = false;
-    selectToggles.isCreateOpen = false;
   }
 }
 
